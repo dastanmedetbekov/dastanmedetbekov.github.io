@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Dastan's Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="site-title">Dastan's Blog</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="posts.html">Posts</a></li>
+                <li><a href="articles.html">Articles</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>About This Blog</h1>
+            <p>The person, the site, and the philosophy</p>
+        </header>
+
+        <main>
+            <div class="markdown-content">
+                <script type="text/markdown">
+## About Me
+
+Hi! I'm **Dastan Medetbekov**, a developer who loves building things with code. I'm passionate about clean code, simple solutions, and the open web.
+
+This blog is my personal space to share:
+
+- Technical posts about programming and software development
+- Thoughts on technology, tools, and workflows
+- Book reviews and recommendations
+- Tutorials and how-to guides
+- Random observations and ideas
+
+## About This Site
+
+This website is intentionally simple. It's built with:
+
+- **Pure HTML & CSS** - No bloated frameworks
+- **Markdown** for content - Easy to write and maintain
+- **GitHub Pages** for hosting - Free, fast, and reliable
+- **No tracking** - Your privacy matters
+- **No JavaScript** (except for Markdown rendering) - Fast and accessible
+
+### Site Structure
+
+The blog is organized into three main sections:
+
+1. **News** - Quick announcements and site updates
+2. **Posts** - Short, Telegram-style thoughts and links
+3. **Articles** - Long-form writing and in-depth tutorials
+
+This structure lets me share different types of content without forcing everything into the same format.
+
+## Design Philosophy
+
+I'm inspired by the early web (2000s era) when personal websites were actually *personal*. No cookie banners, no analytics tracking, no ads - just content and personality.
+
+### Why This Design?
+
+- **Simple** - No unnecessary complexity
+- **Fast** - Loads instantly, works everywhere
+- **Accessible** - Works without JavaScript
+- **Personal** - Reflects my style and preferences
+- **Sustainable** - Easy to maintain long-term
+
+## Contact
+
+Want to get in touch? Here's how:
+
+- **Email**: [your-email@example.com](mailto:your-email@example.com)
+- **GitHub**: [github.com/dastanmedetbekov](https://github.com/dastanmedetbekov)
+- **RSS**: Subscribe to updates via [RSS feed](rss.xml)
+
+Feel free to reach out if you want to:
+- Discuss something I wrote
+- Suggest a topic for a future post
+- Report a bug or typo
+- Just say hi!
+
+## Colophon
+
+**Built with:**
+- HTML5 & CSS3
+- [Marked.js](https://marked.js.org/) for Markdown parsing
+- Hosted on [GitHub Pages](https://pages.github.com/)
+- Edited in [VS Code](https://code.visualstudio.com/)
+
+**Typography:**
+- Body text: Georgia, Times New Roman (serif)
+- Headings: System fonts
+- Code: Courier New (monospace)
+
+**Colors:**
+- Primary: #7eb4d6 (blue)
+- Accent: #ff6b9d (pink)
+- Text: #2c3e50 (dark blue-gray)
+- Background: #e8f4f8 (light blue)
+
+## License
+
+All content on this blog is written by me and is my own opinion. You're free to link to any page, quote with attribution, or share on social media.
+
+The site's source code is available on [GitHub](https://github.com/dastanmedetbekov/dastanmedetbekov.github.io) and is open source.
+
+---
+
+*Last updated: December 20, 2025*
+                </script>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Dastan Medetbekov | Built with HTML, CSS & Markdown</p>
+            <p>
+                <a href="mailto:hello@example.com">Email</a> •
+                <a href="https://github.com/dastanmedetbekov">GitHub</a> •
+                <a href="rss.xml">RSS</a>
+            </p>
+            <div class="webring">
+                <p>Part of the IndieWeb • No cookies, no tracking, no BS</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('script[type="text/markdown"]').forEach(function(element) {
+            const markdown = element.textContent.trim();
+            const html = marked.parse(markdown);
+            const container = element.parentElement;
+            container.innerHTML = html;
+        });
+    </script>
+</body>
+</html>

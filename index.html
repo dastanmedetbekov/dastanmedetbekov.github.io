@@ -1,103 +1,140 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Блог Дастана</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        
-        header {
-            background: white;
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-        
-        header p {
-            color: #666;
-            font-size: 1.1em;
-        }
-        
-        article {
-            background: white;
-            padding: 30px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        article h2 {
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-        
-        .date {
-            color: #999;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-            display: block;
-        }
-        
-        article p {
-            margin-bottom: 15px;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #999;
-            margin-top: 40px;
-        }
-        
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Dastan's Blog - Thoughts & Code</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Блог Дастана</h1>
-        <p>Мои мысли и заметки</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Dastan's Blog</h1>
+            <p>Code, thoughts, and random musings</p>
+            <div class="tagline">Est. 2025 • Built with ❤️ and HTML</div>
+        </header>
 
-    <main>
-        <article>
-            <h2>Первый пост</h2>
-            <span class="date">20 декабря 2025</span>
-            <p>Добро пожаловать в мой блог! Здесь я буду делиться своими мыслями, идеями и интересными находками.</p>
-            <p>Это простой дизайн, который фокусируется на содержании. Минимум отвлекающих элементов — максимум концентрации на тексте.</p>
-        </article>
+        <div class="layout">
+            <aside>
+                <h3>Navigation</h3>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home <span class="counter">2</span></a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#archive">Archive</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
 
-        <article>
-            <h2>О чем будет блог</h2>
-            <span class="date">20 декабря 2025</span>
-            <p>Планирую писать о разных темах: программирование, технологии, книги, путешествия и просто интересные наблюдения из жизни.</p>
+                <h3 style="margin-top: 30px;">Categories</h3>
+                <ul class="nav-links">
+                    <li><a href="#code">Code <span class="counter">1</span></a></li>
+                    <li><a href="#thoughts">Thoughts <span class="counter">1</span></a></li>
+                    <li><a href="#tutorials">Tutorials <span class="counter">0</span></a></li>
+                    <li><a href="#reviews">Reviews <span class="counter">0</span></a></li>
+                </ul>
+
+                <h3 style="margin-top: 30px;">Links</h3>
+                <ul class="nav-links">
+                    <li><a href="https://github.com/dastanmedetbekov" target="_blank">GitHub →</a></li>
+                    <li><a href="#rss">RSS Feed</a></li>
+                </ul>
+            </aside>
+
+            <main>
+                <article>
+                    <h2><a href="posts/welcome.html">Welcome to My Blog</a> <span class="badge">NEW</span></h2>
+                    <span class="date">[December 20, 2025]</span>
+                    <div class="post-meta">
+                        <span>by Dastan</span>
+                        <span class="tags">
+                            <a href="#thoughts" class="tag">#thoughts</a>
+                            <a href="#meta" class="tag">#meta</a>
+                        </span>
+                    </div>
+                    <div class="markdown-content">
+                        <script type="text/markdown">
+Hey there! Welcome to my little corner of the internet. 
+
+I've decided to start this blog to share my thoughts on **programming**, **technology**, and whatever else catches my interest. No fancy frameworks here - just good old HTML, CSS, and a touch of JavaScript.
+
+This site is inspired by the early 2000s web aesthetic - simple, functional, and personal. No tracking, no ads, no nonsense.
+
+### What to expect
+
+- Technical posts about coding
+- Book reviews and recommendations
+- Random thoughts and observations
+- Tutorials and how-tos
+
+Stay tuned for more content!
+                        </script>
+                    </div>
+                    <a href="posts/welcome.html" class="read-more">Read more →</a>
+                </article>
+
+                <article>
+                    <h2><a href="posts/markdown-guide.html">How to Write Posts in Markdown</a></h2>
+                    <span class="date">[December 20, 2025]</span>
+                    <div class="post-meta">
+                        <span>by Dastan</span>
+                        <span class="tags">
+                            <a href="#code" class="tag">#code</a>
+                            <a href="#tutorial" class="tag">#tutorial</a>
+                        </span>
+                    </div>
+                    <div class="markdown-content">
+                        <script type="text/markdown">
+All posts on this blog are written in **Markdown**, which makes writing content super easy and clean.
+
+Here's a quick example of what you can do:
+
+```javascript
+// Code blocks work great
+function hello() {
+    console.log('Hello, world!');
+}
+```
+
+You can also use:
+- Lists (like this one)
+- **Bold** and *italic* text
+- [Links](https://example.com)
+- Images, blockquotes, and more
+
+> Markdown is simple, powerful, and perfect for blogging.
+
+Just write your content inside the `<script type="text/markdown">` tags, and it will be automatically rendered!
+                        </script>
+                    </div>
+                    <a href="posts/markdown-guide.html" class="read-more">Read more →</a>
+                </article>
+            </main>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Dastan Medetbekov | Built with HTML, CSS & Markdown</p>
+            <p>
+                <a href="mailto:hello@example.com">Email</a> •
+                <a href="https://github.com/dastanmedetbekov">GitHub</a> •
+                <a href="#rss">RSS</a>
+            </p>
+            <div class="webring">
+                <p>Part of the IndieWeb • No cookies, no tracking, no BS</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Render all Markdown blocks
+        document.querySelectorAll('script[type="text/markdown"]').forEach(function(element) {
+            const markdown = element.textContent.trim();
+            const html = marked.parse(markdown);
+            const container = element.parentElement;
+            container.innerHTML = html;
+        });
+    </script>
+</body>
+</html>
             <p>Буду рад любым комментариям и обратной связи!</p>
         </article>
     </main>

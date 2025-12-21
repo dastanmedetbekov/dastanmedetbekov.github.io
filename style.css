@@ -1,30 +1,26 @@
-/* CSS Variables - Retro Light Theme */
+/* CSS Variables - Minimal Theme */
 :root {
     --color-primary: #0066cc;
-    --color-secondary: #ff6600;
-    --color-tertiary: #cc0000;
+    --color-secondary: #0066cc;
+    --color-tertiary: #0066cc;
     --color-text: #333333;
     --color-bg-dark: #ffffff;
     --color-bg-darker: #f0f0f0;
-    --color-bg-light: #d6e4ff;
-    --color-bg-accent: #ffe6cc;
-    --color-border: #0066cc;
+    --color-bg-light: #e8f0ff;
+    --color-bg-accent: #f5f5f5;
+    --color-border: #cccccc;
     --color-link: #0066cc;
-    --color-link-hover: #ff3300;
-    --color-link-visited: #9933cc;
-    --color-shadow: rgba(0, 102, 204, 0.2);
+    --color-link-hover: #004499;
+    --color-link-visited: #0066cc;
+    --color-shadow: rgba(0, 0, 0, 0.1);
     --font-mono: 'Courier New', 'Courier', monospace;
     --font-sans: 'Trebuchet MS', 'Verdana', Arial, sans-serif;
-    --border-width: 2px;
+    --border-width: 1px;
 }
 
 body {
     font-family: var(--font-sans);
     background-color: #e8e8e8;
-    background-image: 
-        linear-gradient(90deg, rgba(0, 102, 204, 0.03) 1px, transparent 1px),
-        linear-gradient(rgba(0, 102, 204, 0.03) 1px, transparent 1px);
-    background-size: 20px 20px;
     color: var(--color-text);
     margin: 0;
     padding: 0;
@@ -35,36 +31,27 @@ body {
 /* Links */
 a {
     color: var(--color-link);
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border-bottom: 1px dotted var(--color-link);
-    padding-bottom: 2px;
+    text-decoration: underline;
+    font-weight: 400;
 }
 
 a:hover {
     color: var(--color-link-hover);
-    background-color: rgba(255, 102, 0, 0.1);
-    border-bottom: 2px solid var(--color-link-hover);
-    padding: 2px 4px;
+    text-decoration: underline;
 }
 
 a:visited {
     color: var(--color-link-visited);
-    border-bottom-color: var(--color-link-visited);
 }
 
 a:focus {
     outline: 2px solid var(--color-link);
     outline-offset: 2px;
-    background-color: var(--color-bg-light);
 }
 
 a.active {
     font-weight: bold;
-    color: var(--color-tertiary);
-    border-bottom: 3px solid var(--color-tertiary);
-    background-color: rgba(204, 0, 0, 0.05);
+    color: var(--color-link);
 }
 
 /* Headings */
@@ -72,12 +59,10 @@ h1 {
     color: var(--color-primary);
     font-size: 32px;
     text-align: center;
-    text-shadow: 2px 2px 0 rgba(0, 102, 204, 0.1);
-    border-bottom: 4px double var(--color-primary);
+    border-bottom: 2px solid var(--color-border);
     padding-bottom: 12px;
     margin: 25px 0;
     font-family: var(--font-sans);
-    letter-spacing: 1px;
     font-weight: bold;
 }
 
@@ -85,15 +70,13 @@ h2 {
     color: var(--color-primary);
     font-size: 24px;
     margin-top: 25px;
-    text-shadow: 1px 1px 0 rgba(0, 102, 204, 0.1);
     font-family: var(--font-sans);
-    border-left: 5px solid var(--color-secondary);
-    padding-left: 15px;
+    padding-left: 0;
     font-weight: bold;
 }
 
 h3 {
-    color: var(--color-secondary);
+    color: var(--color-text);
     font-size: 19px;
     margin-top: 15px;
     font-family: var(--font-sans);
@@ -103,17 +86,15 @@ h3 {
 /* Horizontal Rules */
 hr {
     border: 0;
-    height: 2px;
-    background: linear-gradient(to right, transparent, var(--color-border), transparent);
+    height: 1px;
+    background: var(--color-border);
     margin: 20px 0;
-    box-shadow: 0 1px 2px var(--color-shadow);
 }
 
 /* Tables */
 table {
     border-collapse: collapse;
     color: var(--color-text);
-    box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 th {
@@ -121,22 +102,19 @@ th {
     text-align: left;
     padding: 12px;
     font-weight: bold;
-    background: linear-gradient(180deg, var(--color-bg-light) 0%, rgba(204, 230, 255, 0.7) 100%);
-    border: 2px solid var(--color-border);
+    background: var(--color-bg-light);
+    border: 1px solid var(--color-border);
     font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
 }
 
 td {
     padding: 12px;
-    border: 1px solid rgba(0, 102, 204, 0.3);
+    border: 1px solid var(--color-border);
     background-color: var(--color-bg-dark);
-    transition: background-color 0.2s ease;
 }
 
 tr:hover td {
-    background-color: rgba(204, 230, 255, 0.3);
+    background-color: var(--color-bg-accent);
 }
 
 /* Lists */
@@ -167,26 +145,20 @@ li {
     display: block;
     padding: 10px 12px;
     border: none;
-    border-left: 4px solid transparent;
-    background-color: rgba(255, 255, 255, 0.5);
-    transition: all 0.3s ease;
-    font-weight: 500;
-    border-bottom: none;
+    background-color: transparent;
+    font-weight: 400;
+    text-decoration: none;
 }
 
 .nav-list li a:hover {
     background-color: var(--color-bg-light);
-    border-left-color: var(--color-secondary);
-    padding-left: 18px;
-    transform: translateX(3px);
+    text-decoration: none;
 }
 
 .nav-list li a.active {
-    background: linear-gradient(90deg, var(--color-bg-light) 0%, rgba(204, 230, 255, 0.5) 100%);
-    border-left-color: var(--color-tertiary);
+    background: var(--color-bg-light);
     font-weight: bold;
-    color: var(--color-tertiary);
-    border-bottom: none;
+    color: var(--color-link);
 }
 
 .contact-list {
@@ -200,12 +172,10 @@ li {
     margin: 10px 0;
     list-style: none;
     padding: 5px;
-    border-left: 3px solid var(--color-bg-light);
-    transition: border-left-color 0.2s ease;
 }
 
 .contact-list li:hover {
-    border-left-color: var(--color-secondary);
+    background-color: transparent;
 }
 
 /* Bold Text */
@@ -233,8 +203,6 @@ center, .text-center {
     margin: 0;
     padding: 0;
     font-weight: bold;
-    text-shadow: 2px 2px 0 rgba(0, 102, 204, 0.15);
-    letter-spacing: 2px;
 }
 
 .site-description {
@@ -242,11 +210,10 @@ center, .text-center {
     color: var(--color-text);
     font-style: italic;
     margin: 8px 0 0 0;
-    opacity: 0.85;
 }
 
 .header-banner {
-    box-shadow: 0 4px 12px var(--color-shadow);
+    box-shadow: none;
 }
 
 /* Sidebar Elements */
@@ -257,21 +224,17 @@ center, .text-center {
     text-align: center;
     margin: 0 0 10px 0;
     font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
     padding: 8px;
-    background: linear-gradient(180deg, rgba(0, 102, 204, 0.1) 0%, transparent 100%);
-    border-radius: 4px;
+    background: var(--color-bg-light);
 }
 
 .sidebar-nav {
-    box-shadow: 0 2px 8px var(--color-shadow);
+    box-shadow: none;
 }
 
 .status-online {
     color: #00cc00;
     font-weight: bold;
-    text-shadow: 0 0 8px rgba(0, 204, 0, 0.3);
 }
 
 .site-info {
@@ -364,17 +327,15 @@ marquee {
 
 /* Marquee */
 .marquee-container {
-    background: linear-gradient(90deg, var(--color-bg-accent) 0%, rgba(255, 230, 204, 0.8) 50%, var(--color-bg-accent) 100%);
-    border-top: 3px solid var(--color-secondary);
-    border-bottom: 3px solid var(--color-secondary);
-    box-shadow: inset 0 2px 8px rgba(255, 102, 0, 0.2);
+    background: var(--color-bg-accent);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .marquee-text {
     font-size: 15px;
-    color: var(--color-tertiary);
-    font-weight: bold;
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+    color: var(--color-text);
+    font-weight: normal;
 }
 
 /* Paragraph Spacing */
@@ -389,7 +350,6 @@ img {
     image-rendering: auto;
     max-width: 100%;
     height: auto;
-    box-shadow: 0 2px 8px var(--color-shadow);
 }
 
 /* Selection Color */
@@ -410,17 +370,16 @@ img {
 
 ::-webkit-scrollbar-track {
     background: var(--color-bg-darker);
-    border: 1px solid rgba(0, 102, 204, 0.2);
+    border: 1px solid var(--color-border);
 }
 
 ::-webkit-scrollbar-thumb {
     background: var(--color-bg-light);
     border: 1px solid var(--color-border);
-    border-radius: 7px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-primary);
+    background: var(--color-link-hover);
 }
 
 /* Special Containers */
@@ -429,58 +388,46 @@ img {
     padding: 15px;
     margin: 15px 0;
     background-color: var(--color-bg-darker);
-    box-shadow: 0 2px 8px var(--color-shadow);
-    border-radius: 4px;
 }
 
 /* Code Blocks */
 code, pre {
     background-color: var(--color-bg-darker);
-    border: 1px solid rgba(0, 102, 204, 0.3);
+    border: 1px solid var(--color-border);
     padding: 10px;
     display: block;
     margin: 10px 0;
     overflow-x: auto;
     font-family: var(--font-mono);
     color: var(--color-text);
-    border-radius: 4px;
 }
 
 code {
     display: inline;
     padding: 2px 6px;
-    background-color: rgba(204, 230, 255, 0.3);
+    background-color: var(--color-bg-accent);
 }
 
 /* Buttons (if needed) */
 button, input[type="submit"] {
-    background: linear-gradient(180deg, var(--color-bg-light) 0%, rgba(204, 230, 255, 0.7) 100%);
+    background: var(--color-bg-light);
     color: var(--color-text);
     border: var(--border-width) solid var(--color-border);
     padding: 10px 18px;
     font-family: var(--font-sans);
     cursor: pointer;
     font-size: 14px;
-    transition: all 0.2s ease;
     font-weight: 600;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px var(--color-shadow);
 }
 
 button:hover, input[type="submit"]:hover {
-    background: linear-gradient(180deg, var(--color-primary) 0%, #0052a3 100%);
+    background: var(--color-link-hover);
     color: white;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px var(--color-shadow);
 }
 
 button:focus, input[type="submit"]:focus {
     outline: 2px solid var(--color-primary);
     outline-offset: 2px;
-}
-
-button:active, input[type="submit"]:active {
-    transform: translateY(0);
 }
 
 /* Input Fields */
@@ -540,7 +487,6 @@ input[type="text"]:focus, textarea:focus {
     
     .site-title {
         font-size: 20px;
-        letter-spacing: 1px;
     }
     
     h1 {

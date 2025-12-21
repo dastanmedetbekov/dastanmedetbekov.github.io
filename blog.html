@@ -1,0 +1,66 @@
+---
+layout: default
+title: Blog
+---
+
+<!-- Blog Header -->
+<table width="100%" border="3" cellpadding="10" cellspacing="0" bgcolor="#001100">
+    <tr bgcolor="#003300">
+        <td>
+            <font size="5" color="#00ff00"><b>BLOG</b></font>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p>
+                <font size="3">
+                    My personal blog where I write about things I find interesting, 
+                    my thoughts, experiences, and whatever is on my mind.
+                </font>
+            </p>
+        </td>
+    </tr>
+</table>
+
+<br>
+
+<!-- Blog Posts List -->
+<table width="100%" border="3" cellpadding="10" cellspacing="0" bgcolor="#001100">
+    <tr bgcolor="#003300">
+        <td>
+            <font size="4" color="#00ff00"><b>ALL POSTS</b></font>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {% if site.posts.size > 0 %}
+                <table width="100%" border="1" cellpadding="8" cellspacing="0">
+                    <tr bgcolor="#002200">
+                        <th width="30%">Date</th>
+                        <th>Post Title</th>
+                        <th width="15%">Read</th>
+                    </tr>
+                    {% for post in site.posts %}
+                    <tr>
+                        <td>{{ post.date | date: "%b %d, %Y" }}</td>
+                        <td><b>{{ post.title }}</b></td>
+                        <td><a href="{{ post.url | relative_url }}">[READ]</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p align="center">
+                    <font size="3" color="#00cc00">
+                        <i>No posts yet. This is where your blog posts will appear.</i>
+                    </font>
+                </p>
+                <br>
+                <p class="small">
+                    <b>How to add posts:</b><br>
+                    Create Markdown files in "_posts" folder with name format: YYYY-MM-DD-title.md<br>
+                    Jekyll will automatically convert them to HTML pages!
+                </p>
+            {% endif %}
+        </td>
+    </tr>
+</table>

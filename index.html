@@ -1,88 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dastan's Blog - Home</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-</head>
-<body>
-    <nav class="top-nav">
-        <div class="nav-container">
-            <a href="index.html" class="site-title">Dastan's Blog</a>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="posts.html">Posts</a></li>
-                <li><a href="articles.html">Articles</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </div>
-    </nav>
+---
+layout: default
+title: Home
+---
 
-    <div class="container">
-        <header>
-            <h1>Welcome to My Blog</h1>
-            <p>Thoughts on code, technology, and life</p>
-            <div class="header-meta">
-                Personal website of Dastan Medetbekov • Developer & Writer
-            </div>
-        </header>
-
-        <main>
-            <h2 style="color: #2c5f77; margin-bottom: 20px;">Recent Updates</h2>
-            
-            <article>
-                <h2><a href="articles/welcome.html">Welcome to My Blog</a> <span class="badge">NEW</span></h2>
-                <span class="date">[December 20, 2025]</span>
-                <div class="post-meta">
-                    <span>by Dastan</span>
-                    <span class="tags">
-                        <a href="#thoughts" class="tag">#thoughts</a>
-                        <a href="#meta" class="tag">#meta</a>
-                    </span>
-                </div>
-                <p>Hey there! Welcome to my little corner of the internet. I've decided to start this blog to share my thoughts on programming, technology, and whatever else catches my interest.</p>
-                <p>This site is inspired by the early 2000s web aesthetic - simple, functional, and personal. No tracking, no ads, no nonsense.</p>
-                <a href="articles/welcome.html" class="read-more">Read full article →</a>
-            </article>
-
-            <article style="border-bottom: none;">
-                <h2><a href="articles/markdown-guide.html">Writing Posts in Markdown</a></h2>
-                <span class="date">[December 20, 2025]</span>
-                <div class="post-meta">
-                    <span>by Dastan</span>
-                    <span class="tags">
-                        <a href="#code" class="tag">#code</a>
-                        <a href="#tutorial" class="tag">#tutorial</a>
-                    </span>
-                </div>
-                <p>All posts on this blog are written in Markdown, which makes writing content super easy and clean. Here's a quick guide on how to use Markdown for your own posts.</p>
-                <a href="articles/markdown-guide.html" class="read-more">Read full article →</a>
-            </article>
-        </main>
-
-        <footer>
-            <p>&copy; 2025 Dastan Medetbekov | Built with HTML, CSS & Markdown</p>
+<!-- Welcome Section -->
+<table width="100%" border="3" cellpadding="10" cellspacing="0" bgcolor="#001100">
+    <tr bgcolor="#003300">
+        <td>
+            <font size="5" color="#00ff00"><b>WELCOME</b></font>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><font size="2" color="#00ff00"><b>Last Updated:</b> {{ site.time | date: "%B %d, %Y" }}</font></p>
+            <hr>
             <p>
-                <a href="mailto:hello@example.com">Email</a> •
-                <a href="https://github.com/dastanmedetbekov">GitHub</a> •
-                <a href="rss.xml">RSS</a>
+                <font size="3">
+                    Welcome to my personal corner of the internet. This is where I share 
+                    my thoughts, ideas, and projects.
+                </font>
             </p>
-            <div class="webring">
-                <p>Part of the IndieWeb • No cookies, no tracking, no BS</p>
-            </div>
-        </footer>
-    </div>
-</body>
-</html>
-            <p>Буду рад любым комментариям и обратной связи!</p>
-        </article>
-    </main>
+            <p>
+                <font size="3">
+                    This website is built with pure HTML and CSS - simple, fast, and honest. 
+                    No tracking, no ads, just content.
+                </font>
+            </p>
+        </td>
+    </tr>
+</table>
 
-    <footer>
-        <p>&copy; 2025 Dastan Medetbekov</p>
-    </footer>
-</body>
-</html>
+<br>
+
+<!-- Latest Blog Posts -->
+<table width="100%" border="3" cellpadding="10" cellspacing="0" bgcolor="#001100">
+    <tr bgcolor="#003300">
+        <td>
+            <font size="4" color="#00ff00"><b>LATEST BLOG POSTS</b></font>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {% if site.posts.size > 0 %}
+                <table width="100%" border="1" cellpadding="5" cellspacing="0">
+                    <tr bgcolor="#002200">
+                        <th width="30%">Date</th>
+                        <th>Title</th>
+                    </tr>
+                    {% for post in site.posts limit:5 %}
+                    <tr>
+                        <td>{{ post.date | date: "%b %d, %Y" }}</td>
+                        <td><a href="{{ post.url | relative_url }}">{{ post.title }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p><i>No posts yet. Check back soon!</i></p>
+            {% endif %}
+            <p align="right"><a href="{{ '/blog.html' | relative_url }}"><b>[View All Posts]</b></a></p>
+        </td>
+    </tr>
+</table>
+
+<br>
+
+<!-- Projects Section -->
+<table width="100%" border="3" cellpadding="10" cellspacing="0" bgcolor="#001100">
+    <tr bgcolor="#003300">
+        <td>
+            <font size="4" color="#00ff00"><b>PROJECTS</b></font>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><i>Projects coming soon...</i></p>
+            <p align="right"><a href="{{ '/projects.html' | relative_url }}"><b>[View Projects]</b></a></p>
+        </td>
+    </tr>
+</table>

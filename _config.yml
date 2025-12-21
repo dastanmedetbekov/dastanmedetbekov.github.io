@@ -1,0 +1,32 @@
+# Site settings
+title: "Dastan Medetbekov"
+description: "Personal Website & Blog"
+url: "https://dastanmedetbekov.github.io"
+baseurl: ""
+
+# Author
+author: "Dastan Medetbekov"
+email: "hello@example.com"
+github_username: dastanmedetbekov
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /posts/:year-:month-:day-:title/
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+
+# Timezone
+timezone: Asia/Bishkek

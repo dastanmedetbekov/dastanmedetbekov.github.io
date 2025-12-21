@@ -3,88 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="author" content="{{ site.author }}">
+    <meta name="theme-color" content="#003300">
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    {% seo %}
     <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+    {% feed_meta %}
 </head>
 <body>
     <!-- Header Banner -->
-    <table width="100%" border="2" cellpadding="0" cellspacing="0" bgcolor="#003300">
-        <tr>
-            <td align="center">
-                <table width="98%" border="0" cellpadding="15">
-                    <tr>
-                        <td align="center">
-                            <font face="Arial" size="5" color="#00ff00">
-                                <b>{{ site.title | upcase }}</b>
-                            </font><br>
-                            <font face="Courier New" size="3" color="#00cc00">
-                                <i>{{ site.description }}</i>
-                            </font>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+    <header>
+        <table width="100%" border="2" cellpadding="0" cellspacing="0" bgcolor="#003300" class="header-banner">
+            <tr>
+                <td align="center">
+                    <table width="98%" border="0" cellpadding="15">
+                        <tr>
+                            <td align="center">
+                                <h1 class="site-title">{{ site.title | upcase }}</h1>
+                                <p class="site-description">{{ site.description }}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </header>
 
     <!-- Main Layout Table -->
     <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
             <!-- Left Sidebar -->
             <td width="220" valign="top" bgcolor="#001100">
-                <table width="100%" border="2" cellpadding="8" cellspacing="0" bgcolor="#002200">
-                    <tr>
-                        <td>
-                            <center>
-                                <font color="#00ff00" size="3"><b>NAVIGATION</b></font>
-                            </center>
-                            <hr>
+                <nav aria-label="Main navigation">
+                    <table width="100%" border="2" cellpadding="8" cellspacing="0" bgcolor="#002200" class="sidebar-nav">
+                        <tr>
+                            <td>
+                                <h2 class="nav-heading">NAVIGATION</h2>
+                                <hr>
+                                
+                                <ul class="nav-list">
+                                    <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' or page.url == '/index.html' %}aria-current="page" class="active"{% endif %}>HOME</a></li>
+                                    <li><a href="{{ '/blog.html' | relative_url }}" {% if page.url == '/blog.html' %}aria-current="page" class="active"{% endif %}>Blog</a></li>
+                                    <li><a href="{{ '/projects.html' | relative_url }}" {% if page.url == '/projects.html' %}aria-current="page" class="active"{% endif %}>Projects</a></li>
+                                    <li><a href="{{ '/about.html' | relative_url }}" {% if page.url == '/about.html' %}aria-current="page" class="active"{% endif %}>About Me</a></li>
+                                    <li><a href="{{ '/links.html' | relative_url }}" {% if page.url == '/links.html' %}aria-current="page" class="active"{% endif %}>Links</a></li>
+                                </ul>
                             
-                            <p>▸ <a href="{{ '/' | relative_url }}">{% if page.url == '/' or page.url == '/index.html' %}<b>HOME</b>{% else %}HOME{% endif %}</a></p>
-                            <p>▸ <a href="{{ '/blog.html' | relative_url }}">{% if page.url == '/blog.html' %}<b>Blog</b>{% else %}Blog{% endif %}</a></p>
-                            <p>▸ <a href="{{ '/projects.html' | relative_url }}">{% if page.url == '/projects.html' %}<b>Projects</b>{% else %}Projects{% endif %}</a></p>
-                            <p>▸ <a href="{{ '/about.html' | relative_url }}">{% if page.url == '/about.html' %}<b>About Me</b>{% else %}About Me{% endif %}</a></p>
-                            <p>▸ <a href="{{ '/links.html' | relative_url }}">{% if page.url == '/links.html' %}<b>Links</b>{% else %}Links{% endif %}</a></p>
+                                <hr>
+                                
+                                <h3 class="sidebar-heading">CONTACT</h3>
+                                <hr>
+                                
+                                <ul class="contact-list">
+                                    <li>Email: <a href="mailto:{{ site.email }}" rel="noopener">Send Mail</a></li>
+                                    <li>GitHub: <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener noreferrer">Profile</a></li>
+                                    <li>RSS: <a href="{{ '/feed.xml' | relative_url }}" type="application/rss+xml">Subscribe</a></li>
+                                </ul>
                             
-                            <hr>
-                            
-                            <center>
-                                <font color="#00ff00" size="3"><b>CONTACT</b></font>
-                            </center>
-                            <hr>
-                            
-                            <p>Email: <a href="mailto:{{ site.email }}">Send Mail</a></p>
-                            <p>GitHub: <a href="https://github.com/{{ site.github_username }}">Profile</a></p>
-                            <p>RSS: <a href="{{ '/feed.xml' | relative_url }}">Subscribe</a></p>
-                            
-                            <hr>
-                            
-                            <center>
-                                <font color="#00ff00" size="3"><b>INFO</b></font>
-                            </center>
-                            <hr>
-                            
-                            <p class="small">
-                                <b>Site Status:</b><br>
-                                <font color="#00ff00">ONLINE</font><br><br>
-                                <b>Last Update:</b><br>
-                                {{ site.time | date: "%b %d, %Y" }}<br><br>
-                                <b>Built with:</b><br>
-                                Jekyll + HTML/CSS<br><br>
-                            </p>
-                            
-                            <hr>
-                            
-                            <center>
-                                <p class="small">
-                                    Best viewed in<br>
-                                    <b>800x600</b><br>
-                                    or higher
-                                </p>
-                            </center>
-                        </td>
-                    </tr>
-                </table>
+                                <hr>
+                                
+                                <h3 class="sidebar-heading">INFO</h3>
+                                <hr>
+                                
+                                <aside class="site-info">
+                                    <p class="small">
+                                        <strong>Site Status:</strong><br>
+                                        <span class="status-online" aria-label="Status: Online">ONLINE</span><br><br>
+                                        <strong>Last Update:</strong><br>
+                                        <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%b %d, %Y" }}</time><br><br>
+                                        <strong>Built with:</strong><br>
+                                        Jekyll + HTML/CSS<br><br>
+                                    </p>
+                                    
+                                    <hr>
+                                    
+                                    <p class="small text-center">
+                                        Best viewed in<br>
+                                        <strong>800x600</strong><br>
+                                        or higher
+                                    </p>
+                                </aside>
+                            </td>
+                        </tr>
+                    </table>
+                </nav>
             </td>
 
             <!-- Main Content Area -->
@@ -92,24 +95,24 @@
                 <table width="98%" border="0" cellpadding="15" cellspacing="10">
                     <tr>
                         <td>
-                            {{ content }}
+                            <main id="main-content" role="main">
+                                {{ content }}
+                            </main>
                             
                             <br>
                             
                             <!-- Footer -->
-                            <table width="100%" border="2" cellpadding="10" cellspacing="0" bgcolor="#002200">
-                                <tr>
-                                    <td align="center">
-                                        <font size="2" color="#009900">
-                                            <i>"Simple is better than complex"</i><br><br>
-                                            No Cookies | No Tracking | No Ads<br>
-                                            Just Pure Content<br><br>
-                                            <b>{{ site.time | date: "%Y" }} {{ site.author }}</b><br>
-                                            Made with HTML and CSS
-                                        </font>
-                                    </td>
-                                </tr>
-                            </table>
+                            <footer role="contentinfo">
+                                <table width="100%" border="2" cellpadding="10" cellspacing="0" bgcolor="#002200" class="site-footer">
+                                    <tr>
+                                        <td align="center">
+                                            <p class="footer-quote">"Simple is better than complex"</p>
+                                            <p class="footer-features">No Cookies | No Tracking | No Ads<br>Just Pure Content</p>
+                                            <p class="footer-copyright">&copy; {{ site.time | date: "%Y" }} {{ site.author }}<br>Made with HTML and CSS</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </footer>
                         </td>
                     </tr>
                 </table>
@@ -118,10 +121,12 @@
     </table>
 
     <!-- Bottom Marquee -->
-    <marquee behavior="scroll" direction="left" scrollamount="3" bgcolor="#003300">
-        <font color="#00ff00" size="3">
-            <b>Welcome to my personal website | Thanks for visiting | Check out the blog</b>
-        </font>
-    </marquee>
+    <div class="marquee-container" role="marquee" aria-label="Scrolling message">
+        <marquee behavior="scroll" direction="left" scrollamount="3" bgcolor="#003300">
+            <span class="marquee-text">
+                Welcome to my personal website | Thanks for visiting | Check out the blog
+            </span>
+        </marquee>
+    </div>
 </body>
 </html>

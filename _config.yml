@@ -14,6 +14,11 @@ markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+  hard_wrap: false
+  
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
 
 # Collections
 collections:
@@ -21,12 +26,28 @@ collections:
     output: true
     permalink: /posts/:year-:month-:day-:title/
 
+# Pagination
+paginate: 10
+paginate_path: "/blog/page:num/"
+
 # Exclude from processing
 exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
   - vendor/
+  - .bundle/
+  - .git/
+  - .github/
+  - node_modules/
+  - "*.gemspec"
+
+# Include
+include:
+  - _pages
 
 # Timezone
 timezone: Asia/Bishkek
+
+# GitHub Pages specific
+github: [metadata]

@@ -1,80 +1,19 @@
----
-layout: default
-title: Home
----
+<head>
+    <meta charset="UTF-8">
+    <title>My Text Blog</title>
 
-<!-- Welcome Section -->
-<table width="100%" border="3" cellpadding="10" cellspacing="0" bgcolor="#f0f0f0">
-    <tr bgcolor="#d6e4ff">
-        <td>
-            <font size="5" color="#0066cc"><b>WELCOME</b></font>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p><font size="2" color="#0066cc"><b>Last Updated:</b> {{ site.time | date: "%B %d, %Y" }}</font></p>
-            <hr>
-            <p>
-                <font size="3">
-                    Welcome to my personal corner of the internet. This is where I share 
-                    my thoughts, ideas, and projects.
-                </font>
-            </p>
-            <p>
-                <font size="3">
-                    This website is built with pure HTML and CSS - simple, fast, and honest. 
-                    No tracking, no ads, just content.
-                </font>
-            </p>
-        </td>
-    </tr>
-</table>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<br>
+    <meta name="description" content="Personal minimalist text blog">
 
-<!-- Latest Blog Posts -->
-<table width="100%" border="3" cellpadding="10" cellspacing="0" bgcolor="#f0f0f0">
-    <tr bgcolor="#d6e4ff">
-        <td>
-            <font size="4" color="#0066cc"><b>LATEST BLOG POSTS</b></font>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            {% if site.posts.size > 0 %}
-                <table width="100%" border="1" cellpadding="5" cellspacing="0">
-                    <tr bgcolor="#d6e4ff">
-                        <th width="30%">Date</th>
-                        <th>Title</th>
-                    </tr>
-                    {% for post in site.posts limit:5 %}
-                    <tr>
-                        <td>{{ post.date | date: "%b %d, %Y" }}</td>
-                        <td><a href="{{ post.url | relative_url }}">{{ post.title }}</a></td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            {% else %}
-                <p><i>No posts yet. Check back soon!</i></p>
-            {% endif %}
-            <p align="right"><a href="{{ '/blog.html' | relative_url }}"><b>[View All Posts]</b></a></p>
-        </td>
-    </tr>
-</table>
+    <link rel="icon" href="favicon.ico">
 
-<br>
-
-<!-- Projects Section -->
-<table width="100%" border="3" cellpadding="10" cellspacing="0" bgcolor="#f0f0f0">
-    <tr bgcolor="#d6e4ff">
-        <td>
-            <font size="4" color="#0066cc"><b>PROJECTS</b></font>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p><i>Projects coming soon...</i></p>
-            <p align="right"><a href="{{ '/projects.html' | relative_url }}"><b>[View Projects]</b></a></p>
-        </td>
-    </tr>
-</table>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>My Blog</h1>
+        <p>Notes, thoughts, text only.</p>
+        <hr>
+    </header>
+</body>

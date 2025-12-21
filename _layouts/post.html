@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+</head>
+<body>
+    <!-- Header Banner -->
+    <table width="100%" border="2" cellpadding="0" cellspacing="0" bgcolor="#003300">
+        <tr>
+            <td align="center">
+                <table width="98%" border="0" cellpadding="15">
+                    <tr>
+                        <td align="center">
+                            <font face="Arial" size="5" color="#00ff00">
+                                <b>{{ site.title | upcase }}</b>
+                            </font><br>
+                            <font face="Courier New" size="3" color="#00cc00">
+                                <i>{{ site.description }}</i>
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <!-- Left Sidebar -->
+            <td width="220" valign="top" bgcolor="#001100">
+                <table width="100%" border="2" cellpadding="8" cellspacing="0" bgcolor="#002200">
+                    <tr>
+                        <td>
+                            <center>
+                                <font color="#00ff00" size="3"><b>NAVIGATION</b></font>
+                            </center>
+                            <hr>
+                            
+                            <p>▸ <a href="{{ '/' | relative_url }}">HOME</a></p>
+                            <p>▸ <a href="{{ '/blog.html' | relative_url }}">Blog</a></p>
+                            <p>▸ <a href="{{ '/projects.html' | relative_url }}">Projects</a></p>
+                            <p>▸ <a href="{{ '/about.html' | relative_url }}">About Me</a></p>
+                            <p>▸ <a href="{{ '/links.html' | relative_url }}">Links</a></p>
+                            
+                            <hr>
+                            
+                            <center>
+                                <p class="small">
+                                    <a href="{{ '/blog.html' | relative_url }}">[Back to Blog]</a>
+                                </p>
+                            </center>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+
+            <!-- Main Content -->
+            <td valign="top" bgcolor="#000000">
+                <table width="98%" border="0" cellpadding="15" cellspacing="10">
+                    <tr>
+                        <td>
+                            <!-- Post Header -->
+                            <table width="100%" border="3" cellpadding="10" cellspacing="0" bgcolor="#001100">
+                                <tr bgcolor="#003300">
+                                    <td>
+                                        <font size="5" color="#00ff00"><b>{{ page.title }}</b></font>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p class="small">
+                                            <b>Posted:</b> {{ page.date | date: "%B %d, %Y" }} | 
+                                            <b>Author:</b> {{ site.author }}
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <br>
+
+                            <!-- Post Content -->
+                            <table width="100%" border="3" cellpadding="15" cellspacing="0" bgcolor="#001100">
+                                <tr>
+                                    <td>
+                                        <font size="3">
+                                            {{ content }}
+                                        </font>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <br>
+
+                            <!-- Navigation -->
+                            <table width="100%" border="2" cellpadding="10" cellspacing="0" bgcolor="#002200">
+                                <tr>
+                                    <td align="center">
+                                        <a href="{{ '/blog.html' | relative_url }}">[Back to All Posts]</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <marquee behavior="scroll" direction="left" scrollamount="3" bgcolor="#003300">
+        <font color="#00ff00" size="3">
+            <b>Thanks for reading!</b>
+        </font>
+    </marquee>
+</body>
+</html>

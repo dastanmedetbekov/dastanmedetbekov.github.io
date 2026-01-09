@@ -6,27 +6,38 @@
     <title>Week's Album Recommendation</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
-<body>
+<body class="weeks-album-page">
   <main class="container">
     <header>
       <h1>Week's Album Recommendation by Dastan Medetbekov</h1>
       <p class="muted">One week, one album series</p>
+      <p id="album-count" class="muted"></p>
     </header>
 
-    <section class="card">
+    <!-- Фильтры и поиск -->
+    <div class="filters">
+      <input type="text" id="search-albums" placeholder="🔍 Search albums, artists..." class="search-input">
+      <select id="genre-filter" class="genre-select">
+        <option value="all">All Genres</option>
+        <option value="alternative-folk">Alternative Folk</option>
+        <option value="ambient">Ambient</option>
+      </select>
+    </div>
+
+    <div class="albums-grid">
+    <section class="card album-card" data-genre="alternative-folk">
       <h2>Week 1 (1-4 January)</h2>
       <figure>
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Close_to_paradise.jpg/250px-Close_to_paradise.jpg" alt="Close to Paradise Album Cover">
+        <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Close_to_paradise.jpg" alt="Close to Paradise Album Cover">
       </figure>
       <p><strong>Album:</strong> Close to Paradise</p>
       <p><strong>Artist:</strong> Patrick Watson</p>
       <p><strong>Genre:</strong> Alternative folk</p>
       <p><strong>Release Year:</strong> 2006</p>
-    <p><strong>Description:</strong> This album opened my 2026 year for me.</p>
-      <iframe src="https://www.youtube.com/watch?v=8KcekkaHwtQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <p><strong>Description:</strong> This album opened my 2026 year for me.</p>
     </section>
 
-    <section class="card">
+    <section class="card album-card" data-genre="ambient">
       <h2>Week 2 (5-11 January)</h2>
       <figure>
         <img src="https://upload.wikimedia.org/wikipedia/en/7/79/DisLoop_1.jpg" alt="The Disintegration Loops Album Cover">
@@ -36,10 +47,11 @@
       <p><strong>Genre:</strong> Ambient</p>
       <p><strong>Release Year:</strong> 2002</p>
       <p><strong>Description:</strong> The Disintegration Loops is a hauntingly beautiful ambient album that captures the essence of decay and transformation. Created from deteriorating tape loops, the music evokes a sense of nostalgia and melancholy, making it a profound listening experience.</p>
-      <iframe src="https://www.youtube.com/embed/mjnAE5go9dI?si=cPTyCxqdYIkd4Pae" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </section>
+    </div>
 
-    <p><a href="../index.html">← Back to home</a></p>
+    <p style="margin-top: 32px;"><a href="../index.html">← Back to home</a></p>
   </main>
+  <script src="../script.js"></script>
 </body>
 </html>

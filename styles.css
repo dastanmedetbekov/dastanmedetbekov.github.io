@@ -428,8 +428,8 @@ iframe {
   display: grid;
   grid-template-columns: 1fr;
   gap: 28px;
+  color: var(--re0); 
 }
-
 
 @media (min-width: 768px) {
   .albums-grid {

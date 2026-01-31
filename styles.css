@@ -1,3 +1,13 @@
+.album-card {
+  color: var(--wh0);
+}
+.album-card h2 {
+  color: var(--re0);
+}
+.album-card strong {
+  color: var(--re0);
+  font-weight: 700;
+}
 /* Minimalist dark theme */
 :root {
   /* Geist Mono font-face */

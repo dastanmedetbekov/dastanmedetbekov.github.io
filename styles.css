@@ -473,7 +473,14 @@ iframe {
   border-radius: 12px;
 }
 
-/* Счетчик альбомов */
+.news {
+  margin-bottom: 32px;
+  padding: 16px;
+  background: var(--no2);
+  border-radius: 12px;
+  border: 1.5px solid var(--bl1);
+  color: var(--re0);
+}
 
 #album-count {
   font-size: 14px;
@@ -481,7 +488,6 @@ iframe {
   color: var(--cy0);
 }
 
-/* Плавная анимация появления */
 
 .card {
   transition: opacity 0.6s cubic-bezier(.4,1.4,.6,1), transform 0.6s cubic-bezier(.4,1.4,.6,1);

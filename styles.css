@@ -1,4 +1,3 @@
-
 .album-card {
   color: var(--wh0);
 }
@@ -534,4 +533,110 @@ iframe {
     font-size: 0.9em;
     padding: 8px 0 4px 0;
   }
+}
+
+/* --- Documentation styles --- */
+.sidebar {
+  width: 240px;
+  background: var(--no1);
+  border-right: 2px solid var(--bl1);
+  padding: 32px 18px 32px 18px;
+  box-sizing: border-box;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.sidebar h2 {
+  color: var(--re0);
+  font-size: 1.2em;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+.sidebar a {
+  color: var(--cy0);
+  text-decoration: none;
+  font-size: 1.05em;
+  margin-bottom: 8px;
+  transition: color 0.2s;
+  display: block;
+  padding: 6px 0 6px 8px;
+  border-radius: 6px;
+}
+.sidebar a:hover {
+  color: var(--ye0);
+  background: var(--no2);
+}
+.doc-content {
+  flex: 1;
+  padding: 48px 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.doc-content h1, .doc-content h2, .doc-content h3 {
+  color: var(--re0);
+  margin-top: 0;
+}
+.doc-content p, .doc-content ul, .doc-content ol {
+  color: var(--wh0);
+  font-size: 1.08em;
+}
+@media (max-width: 900px) {
+  .doc-content {
+    padding: 32px 12px;
+  }
+  .sidebar {
+    width: 180px;
+    padding: 24px 8px;
+  }
+}
+@media (max-width: 600px) {
+  body {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid var(--bl1);
+    flex-direction: row;
+    gap: 12px;
+    padding: 12px 4px;
+    min-height: unset;
+    position: static;
+  }
+  .sidebar a {
+    font-size: 0.98em;
+    padding: 6px 8px;
+  }
+  .doc-content {
+    padding: 18px 4px;
+  }
+}
+
+/* --- Code block styles --- */
+pre {
+  background: var(--no2);
+  color: var(--gr0);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 18px 0;
+  font-size: 1em;
+  overflow-x: auto;
+  box-shadow: 0 2px 12px 0 rgba(48,97,242,0.08);
+}
+pre code {
+  background: none;
+  color: inherit;
+  font-size: 1em;
+  padding: 0;
+  border: none;
+}
+code {
+  background: var(--no2);
+  color: var(--cy0);
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 0.98em;
 }

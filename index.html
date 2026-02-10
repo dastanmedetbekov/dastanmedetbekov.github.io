@@ -15,47 +15,91 @@
       <p class="muted">Explore my thoughts, reviews, and favorite picks</p>
     </header>
 
-    <news>
-      <h2>Latest Posts</h2>
-      <ul>
-        <li>
-          <a href="posts/en/code-task-journal.html">Code Task Journal</a>
-          <span class="muted" style="margin-left: 1em;">2026-02-10</span>
-          <br>
-          <span>A running log of programming tasks and how I solved them.</span>
-        </li>
-        <li>
-          <a href="posts/en/vulkan/started-to-learn.html">Started to Learn Vulkan</a>
-          <span class="muted" style="margin-left: 1em;">2026-02-02</span>
-          <br>
-          <span>Began reading Vulkan documentation. I enjoy working on challenging things because it's interesting.</span>
-        </li>
-        <li>
-          <a href="posts/en/game-on-sfml.html">Game On! SFML Edition</a>
-          <span class="muted" style="margin-left: 1em;">2026-02-02</span>
-          <br>
-          <span>Join me as I document my friend Adilet's journey in game development using the Simple and Fast Multimedia Library (SFML).</span>
-        </li>
-      </ul>
-    </news>
+    <div class="latest-grid">
+      <section class="card">
+        <h2 style="margin-top:0;">Latest Posts</h2>
+        <div class="latest-posts">
+          <div class="latest-item">
+            <a href="posts/en/code-task-journal.html" class="tag">Code Task Journal</a>
+            <span class="muted" style="margin-left: 1em;">2026-02-10</span><br>
+            <span>A running log of programming tasks and how I solved them.</span>
+          </div>
+          <div class="latest-item">
+            <a href="posts/en/vulkan/started-to-learn.html" class="tag">Started to Learn Vulkan</a>
+            <span class="muted" style="margin-left: 1em;">2026-02-02</span><br>
+            <span>Began reading Vulkan documentation. I enjoy working on challenging things because it's interesting.</span>
+          </div>
+          <div class="latest-item">
+            <a href="posts/en/game-on-sfml.html" class="tag">Game On! SFML Edition</a>
+            <span class="muted" style="margin-left: 1em;">2026-02-02</span><br>
+            <span>Join me as I document my friend Adilet's journey in game development using the Simple and Fast Multimedia Library (SFML).</span>
+          </div>
+        </div>
+      </section>
+    </div>
 
-    <section>
-      <h2>Experiments</h2>
-      <ul>
-        <li><a href="garden/index.html">Unremarkable Garden</a> (Warning: Uses JavaScript)</li>
-      </ul>
+    <div class="small-cards-grid">
+      <section class="card">
+        <h2 style="margin-top:0;">Experiments</h2>
+        <ul style="list-style:none;padding:0;">
+          <li><a href="garden/index.html" class="tag">Unremarkable Garden</a> <span class="muted">(Warning: Uses JavaScript)</span></li>
+        </ul>
+      </section>
 
-      <h2>Music</h2>
-      <ul>
-        <li><a href="posts/en/weeksalbum.html">Week's Album Recommendation</a></li>
-      </ul>
+      <section class="card">
+        <h2 style="margin-top:0;">Music</h2>
+        <ul style="list-style:none;padding:0;">
+          <li><a href="posts/en/weeksalbum.html" class="tag">Week's Album Recommendation</a></li>
+        </ul>
+      </section>
 
-      <h2>2025 Reviews</h2>
-      <ul>
-        <li><a href="posts/en/albums2025.html">Best Albums of 2025. My Top Picks</a></li>
-        <li><a href="posts/en/review2025.html">Review of 2025</a></li>
-      </ul>
-    </section>
+      <section class="card">
+        <h2 style="margin-top:0;">2025 Reviews</h2>
+        <ul style="list-style:none;padding:0;">
+          <li><a href="posts/en/albums2025.html" class="tag">Best Albums of 2025. My Top Picks</a></li>
+          <li><a href="posts/en/review2025.html" class="tag">Review of 2025</a></li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2 style="margin-top:0;">Poetry Log (Kyrgyz)</h2>
+        <p>Read my poetry journal in Kyrgyz.<br>
+          <a href="posts/kg/poetry-log.html" class="tag" style="margin-top:8px;display:inline-block;">Go to Poetry Log →</a>
+        </p>
+      </section>
+    </div>
+    <style>
+      .latest-grid {
+        margin-bottom: 32px;
+      }
+      .latest-posts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+      .latest-item {
+        background: var(--no2);
+        border-radius: 10px;
+        padding: 18px 18px 12px 18px;
+        box-shadow: 0 2px 8px 0 rgba(48,97,242,0.06);
+        margin-bottom: 0;
+      }
+      @media (max-width: 900px) {
+        .latest-posts {
+          grid-template-columns: 1fr;
+        }
+      }
+      .small-cards-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+      }
+      @media (max-width: 900px) {
+        .small-cards-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </main>
 </body>
 </html>

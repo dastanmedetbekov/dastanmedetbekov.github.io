@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Until End of Summer</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        .title {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #888888;
+        }
+        .countdown {
+            font-size: 5rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="title">Time remaining until end of summer (Bishkek time)</div>
+    <div id="countdown" class="countdown">00:00:00:00</div>
+</div>
+
+<script>
+    function updateCountdown() {
+        const now = new Date();
+        
+        // Target: September 1, 2026, 00:00:00 UTC+6 (Bishkek Time)
+        // 2026-09-01T00:00:00+06:00
+        const targetDate = new Date("2026-09-01T00:00:00+06:00");
+        
+        const difference = targetDate - now;
+
+        if (difference <= 0) {
+            document.getElementById("countdown").innerText = "SUMMER HAS ENDED";
+            return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        const format = (num) => String(num).padStart(2, '0');
+
+        document.getElementById("countdown").innerText = 
+            `${format(days)}d ${format(hours)}h ${format(minutes)}m ${format(seconds)}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>

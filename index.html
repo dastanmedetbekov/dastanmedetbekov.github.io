@@ -11,6 +11,7 @@
 
   html, body {
     height: 100%;
+    height: 100dvh;
     overflow: hidden;
   }
 
@@ -51,24 +52,6 @@
     margin-top: -95px;
     border-radius: 50%;
     transition: top 3s ease, background 3s ease, box-shadow 3s ease;
-  }
-
-  .horizon {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 68%;
-    height: 1px;
-    background: rgba(245, 239, 230, 0.12);
-  }
-
-  .ground {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 68%;
-    bottom: 0;
-    background: #10151B;
   }
 
   .content {
@@ -121,8 +104,6 @@
   <div class="scene">
     <div class="stars" id="stars"></div>
     <div class="body" id="body"></div>
-    <div class="ground"></div>
-    <div class="horizon"></div>
   </div>
 
   <div class="content">
@@ -210,7 +191,6 @@
   document.getElementById('quote').textContent =
     quotes[Math.floor(Math.random() * quotes.length)];
 
-  // --- Bishkek time-of-day sky ---
   function bishkekHourFraction() {
     const parts = new Intl.DateTimeFormat('en-GB', {
       timeZone: 'Asia/Bishkek',
@@ -222,11 +202,11 @@
   }
 
   const stops = [
-    { h: 0,  top:'#0B1220', mid:'#0F1B2E', low:'#16233A', body:'#CFE0F5' }, // night
-    { h: 6,  top:'#2B3A55', mid:'#6B5B7A', low:'#E7935F', body:'#F2B266' }, // dawn
-    { h: 12, top:'#3E86AC', mid:'#7EC1D9', low:'#D9E9DE', body:'#FFE49A' }, // day
-    { h: 18, top:'#17222E', mid:'#2A3B4C', low:'#C96A3E', body:'#E8A33D' }, // dusk
-    { h: 24, top:'#0B1220', mid:'#0F1B2E', low:'#16233A', body:'#CFE0F5' }  // night
+    { h: 0,  top:'#0B1220', mid:'#0F1B2E', low:'#16233A', body:'#CFE0F5' },
+    { h: 6,  top:'#2B3A55', mid:'#6B5B7A', low:'#E7935F', body:'#F2B266' },
+    { h: 12, top:'#3E86AC', mid:'#7EC1D9', low:'#D9E9DE', body:'#FFE49A' },
+    { h: 18, top:'#17222E', mid:'#2A3B4C', low:'#C96A3E', body:'#E8A33D' },
+    { h: 24, top:'#0B1220', mid:'#0F1B2E', low:'#16233A', body:'#CFE0F5' }
   ];
 
   function hexToRgb(hex) {
@@ -257,8 +237,7 @@
 
     document.body.style.background = `linear-gradient(to bottom, ${top} 0%, ${mid} 55%, ${low} 100%)`;
 
-    // celestial arc: high at noon, low at midnight
-    const heightPct = 68 - 55 * Math.sin(frac / 24 * Math.PI);
+    const heightPct = 85 - 65 * Math.sin(frac / 24 * Math.PI);
     const dayFactor = Math.max(0, Math.sin(frac / 24 * Math.PI));
 
     const el = document.getElementById('body');
@@ -273,13 +252,12 @@
     document.getElementById('clock').textContent = `${hh}:${mm}`;
   }
 
-  // scatter stars once
   (function makeStars(){
     const container = document.getElementById('stars');
     for (let i = 0; i < 60; i++) {
       const s = document.createElement('span');
       s.style.left = Math.random()*100 + '%';
-      s.style.top = Math.random()*65 + '%';
+      s.style.top = Math.random()*85 + '%';
       s.style.opacity = (0.3 + Math.random()*0.7).toFixed(2);
       container.appendChild(s);
     }

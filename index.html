@@ -1,71 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Until End of Summer</title>
-    <style>
-        body {
-            background-color: #000000;
-            color: #ffffff;
-            font-family: monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            text-align: center;
-        }
-        .title {
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            color: #888888;
-        }
-        .countdown {
-            font-size: 5rem;
-            font-weight: bold;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Summer's over</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Inter:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background 2s ease;
+  }
+
+  .scene {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .stars {
+    position: absolute;
+    inset: 0;
+    transition: opacity 2s ease;
+  }
+  .stars span {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #F5EFE6;
+    border-radius: 50%;
+  }
+
+  .body {
+    position: absolute;
+    left: 50%;
+    width: 190px;
+    height: 190px;
+    margin-left: -95px;
+    margin-top: -95px;
+    border-radius: 50%;
+    transition: top 3s ease, background 3s ease, box-shadow 3s ease;
+  }
+
+  .horizon {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 68%;
+    height: 1px;
+    background: rgba(245, 239, 230, 0.12);
+  }
+
+  .ground {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 68%;
+    bottom: 0;
+    background: #10151B;
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #F5EFE6;
+    padding: 0 28px;
+    opacity: 0;
+    animation: rise 1.2s ease-out 0.4s forwards;
+    max-width: 640px;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .kicker {
+    font-size: clamp(0.75rem, 2vw, 0.85rem);
+    color: rgba(150, 167, 178, 0.75);
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1.5rem, 4.4vw, 2.5rem);
+    letter-spacing: -0.01em;
+    line-height: 1.35;
+    max-width: 26ch;
+    margin: 0 auto;
+  }
+
+  .note {
+    margin-top: 34px;
+    font-size: 0.85rem;
+    color: rgba(150, 167, 178, 0.7);
+  }
+
+  @media (max-width: 480px) {
+    .content { padding: 0 20px; }
+    .body { width: 140px; height: 140px; margin-left: -70px; margin-top: -70px; }
+  }
+</style>
 </head>
 <body>
 
-<div class="container">
-    <div class="title">Time remaining until end of summer (Bishkek time)</div>
-    <div id="countdown" class="countdown">00:00:00:00</div>
-</div>
+  <div class="scene">
+    <div class="stars" id="stars"></div>
+    <div class="body" id="body"></div>
+    <div class="ground"></div>
+    <div class="horizon"></div>
+  </div>
+
+  <div class="content">
+    <div class="kicker">Bishkek time</div>
+    <h1 id="quote"></h1>
+    <div class="note" id="clock"></div>
+  </div>
 
 <script>
-    function updateCountdown() {
-        const now = new Date();
-        
-        // Target: September 1, 2026, 00:00:00 UTC+6 (Bishkek Time)
-        // 2026-09-01T00:00:00+06:00
-        const targetDate = new Date("2026-09-01T00:00:00+06:00");
-        
-        const difference = targetDate - now;
+  const quotes = [
+    "It's not that the person is bad — the person is in pain.",
+    "Irritation is the emotion of the weak.",
+    "A person can always be understood…",
+    "What if no one is to blame?",
+    "God, grant me the serenity to accept what I cannot change, courage to change what I can, and wisdom to know the difference.",
+    "Pressure breeds resistance.",
+    "If you deliberately settle for less than you're capable of, you'll be unhappy for the rest of your life.",
+    "Real empathy means presence and attention, without trying to fix or judge.",
+    "Hasty answers are a sign of neediness.",
+    "I've been wrong before in my life — maybe I'm wrong now too.",
+    "Don't answer a question you weren't asked; don't read a statement as a question; don't react to remarks that aren't relevant.",
+    "A meeting beats a call, a call beats a letter.",
+    "A gentleman never ends up in a dark alley.",
+    "Confidence is indifference to the outcome.",
+    "Happiness is wanting what you have to do.",
+    "I'm OK, you're OK.",
+    "Speak when you are calm.",
+    "I have the right to have no opinion.",
+    "Everything we do is an attempt to meet a need.",
+    "We see things not as they are, but as we are.",
+    "If a person thinks they aren't being heard, they start shouting louder.",
+    "People only ever say 'thank you' and 'please'.",
+    "People believe what they want to believe.",
+    "The harder it is to say no, the sooner you should say it.",
+    "A slave doesn't dream of freedom — he dreams of having his own slaves.",
+    "Our enemy isn't the person, it's the situation.",
+    "Answer the question that was actually asked, not the one implied.",
+    "An eye for an eye leaves the whole world blind.",
+    "Act from abundance.",
+    "The more directly a person speaks, the more respect it earns — from others and from themselves.",
+    "No pity for the victim.",
+    "The dullest pencil is sharper than the sharpest memory.",
+    "Don't let a child land the plane.",
+    "A request differs from an order in that it can be refused.",
+    "In an argument, both sides lose.",
+    "In a world of judgment, what matters most is what we call things.",
+    "We become dangerous when we stop taking responsibility for our own actions, thoughts, and feelings.",
+    "It's not things themselves, but our view of them, that makes us happy or unhappy.",
+    "Our flaws are an extension of our strengths, and vice versa.",
+    "Whoever wants to be offended will find a reason.",
+    "People are multifaceted — you get an answer from whichever side you address.",
+    "A person is revealed in conflict.",
+    "A real person acts spontaneously yet sensibly and with dignity, while considering the interests of others.",
+    "Everyone carries their parents inside them.",
+    "Incompatibility is 100% dependency.",
+    "Fanaticism is a sign of suppressed doubt.",
+    "Let what happens happen.",
+    "Words are just sound waves.",
+    "If we don't value our own needs, others probably won't either.",
+    "Whoever doesn't respect others doesn't respect themselves.",
+    "Observing without judging is the highest form of human intelligence.",
+    "Life is so varied that whatever a person believes, they'll always find proof of it.",
+    "The doors of positive change open from the inside.",
+    "Emotions are like muscles — whichever ones you use are the ones that grow.",
+    "People always act justly — by their own logic.",
+    "People create conditions to feel their familiar emotions.",
+    "A fool creates chaos in order to feel tired.",
+    "Whatever happens is the goal.",
+    "The most grown-up person in the room can resolve the situation.",
+    "What do you think?",
+    "Don't eat the cactus.",
+    "People do the best they can in the moment.",
+    "If you think you're the smartest person in the room, you're in the wrong room.",
+    "When all you have is a hammer, everything looks like a nail.",
+    "Life is poker, not chess.",
+    "Responsibility equals freedom.",
+    "There's no such thing as a forbidden emotion.",
+    "Are you persistent, or just stubborn?",
+    "An explanation is not an excuse.",
+    "I have the right to my own opinion, and others can disagree.",
+    "So be it.",
+    "Treat others the way you want to be treated."
+  ];
 
-        if (difference <= 0) {
-            document.getElementById("countdown").innerText = "SUMMER HAS ENDED";
-            return;
-        }
+  document.getElementById('quote').textContent =
+    quotes[Math.floor(Math.random() * quotes.length)];
 
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+  // --- Bishkek time-of-day sky ---
+  function bishkekHourFraction() {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Asia/Bishkek',
+      hour: '2-digit', minute: '2-digit', hour12: false
+    }).formatToParts(new Date());
+    const h = parseInt(parts.find(p => p.type === 'hour').value, 10);
+    const m = parseInt(parts.find(p => p.type === 'minute').value, 10);
+    return h + m / 60;
+  }
 
-        const format = (num) => String(num).padStart(2, '0');
+  const stops = [
+    { h: 0,  top:'#0B1220', mid:'#0F1B2E', low:'#16233A', body:'#CFE0F5' }, // night
+    { h: 6,  top:'#2B3A55', mid:'#6B5B7A', low:'#E7935F', body:'#F2B266' }, // dawn
+    { h: 12, top:'#3E86AC', mid:'#7EC1D9', low:'#D9E9DE', body:'#FFE49A' }, // day
+    { h: 18, top:'#17222E', mid:'#2A3B4C', low:'#C96A3E', body:'#E8A33D' }, // dusk
+    { h: 24, top:'#0B1220', mid:'#0F1B2E', low:'#16233A', body:'#CFE0F5' }  // night
+  ];
 
-        document.getElementById("countdown").innerText = 
-            `${format(days)}d ${format(hours)}h ${format(minutes)}m ${format(seconds)}s`;
+  function hexToRgb(hex) {
+    hex = hex.replace('#','');
+    return [parseInt(hex.slice(0,2),16), parseInt(hex.slice(2,4),16), parseInt(hex.slice(4,6),16)];
+  }
+  function lerp(a,b,t){ return a + (b-a)*t; }
+  function lerpHex(h1,h2,t){
+    const c1=hexToRgb(h1), c2=hexToRgb(h2);
+    const r=Math.round(lerp(c1[0],c2[0],t));
+    const g=Math.round(lerp(c1[1],c2[1],t));
+    const bl=Math.round(lerp(c1[2],c2[2],t));
+    return { css:`rgb(${r},${g},${bl})`, rgb:[r,g,bl] };
+  }
+
+  function applySky() {
+    const frac = bishkekHourFraction();
+    let s0, s1;
+    for (let i = 0; i < stops.length - 1; i++) {
+      if (frac >= stops[i].h && frac <= stops[i+1].h) { s0 = stops[i]; s1 = stops[i+1]; break; }
     }
+    const t = (frac - s0.h) / (s1.h - s0.h);
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+    const top = lerpHex(s0.top, s1.top, t).css;
+    const mid = lerpHex(s0.mid, s1.mid, t).css;
+    const low = lerpHex(s0.low, s1.low, t).css;
+    const bodyColor = lerpHex(s0.body, s1.body, t);
+
+    document.body.style.background = `linear-gradient(to bottom, ${top} 0%, ${mid} 55%, ${low} 100%)`;
+
+    // celestial arc: high at noon, low at midnight
+    const heightPct = 68 - 55 * Math.sin(frac / 24 * Math.PI);
+    const dayFactor = Math.max(0, Math.sin(frac / 24 * Math.PI));
+
+    const el = document.getElementById('body');
+    el.style.top = heightPct + '%';
+    el.style.background = bodyColor.css;
+    el.style.boxShadow = `0 0 ${60 + dayFactor*60}px ${10 + dayFactor*20}px rgba(${bodyColor.rgb.join(',')},${0.15 + dayFactor*0.35})`;
+
+    document.getElementById('stars').style.opacity = (1 - dayFactor).toFixed(2);
+
+    const hh = String(Math.floor(frac)).padStart(2,'0');
+    const mm = String(Math.round((frac % 1) * 60)).padStart(2,'0');
+    document.getElementById('clock').textContent = `${hh}:${mm}`;
+  }
+
+  // scatter stars once
+  (function makeStars(){
+    const container = document.getElementById('stars');
+    for (let i = 0; i < 60; i++) {
+      const s = document.createElement('span');
+      s.style.left = Math.random()*100 + '%';
+      s.style.top = Math.random()*65 + '%';
+      s.style.opacity = (0.3 + Math.random()*0.7).toFixed(2);
+      container.appendChild(s);
+    }
+  })();
+
+  applySky();
+  setInterval(applySky, 60000);
 </script>
 
 </body>

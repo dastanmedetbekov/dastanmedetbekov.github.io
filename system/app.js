@@ -1,4 +1,4 @@
-const state = { posts: [], language: "all" };
+const state = { posts: [], language: "en" };
 const list = document.querySelector("#post-list");
 const view = document.querySelector("#post-view");
 const content = document.querySelector("#post-content");
@@ -62,6 +62,8 @@ async function load() {
         state.posts = await response.json();
         const languages = [...new Set(state.posts.map((post) => post.language))].sort();
         selector.innerHTML = `<option value="all">All languages</option>${languages.map((language) => `<option value="${escapeHtml(language)}">${escapeHtml(languageLabel(language))}</option>`).join("")}`;
+        if (!languages.includes("en")) state.language = "all";
+        selector.value = state.language;
         const requested = new URLSearchParams(location.search).get("post");
         renderList();
         if (requested) await openPost(requested);

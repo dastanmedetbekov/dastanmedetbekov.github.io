@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "path": "posts/en/first_note.md",
+    "language": "en",
+    "slug": "first_note",
+    "title": "First Note",
+    "date": "2026-09-16",
+    "section": "Notes",
+    "summary": "",
+    "tags": [],
+    "format": "md"
+  }
+]

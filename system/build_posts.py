@@ -9,7 +9,7 @@ import re
 ROOT = Path(__file__).resolve().parents[1]
 POSTS = ROOT / "posts"
 OUTPUT = ROOT / "system" / "posts.json"
-TEXT_EXTENSIONS = {".md", ".markdown", ".txt"}
+TEXT_EXTENSIONS = {".md", ".markdown", ".txt", ".html", ".htm"}
 
 
 def frontmatter(text):
@@ -36,12 +36,19 @@ def title_from(path, body, metadata):
     heading = re.search(r"^#\s+(.+?)\s*$", body, re.MULTILINE)
     if heading:
         return heading.group(1).strip("# ")
+    html_title = re.search(r"<title[^>]*>\s*(.*?)\s*</title>", body, re.IGNORECASE | re.DOTALL)
+    if html_title:
+        return re.sub(r"<[^>]+>", "", html_title.group(1)).strip()
+    html_heading = re.search(r"<h1[^>]*>\s*(.*?)\s*</h1>", body, re.IGNORECASE | re.DOTALL)
+    if html_heading:
+        return re.sub(r"<[^>]+>", "", html_heading.group(1)).strip()
     return path.stem.replace("-", " ").replace("_", " ").strip().title()
 
 
 def post_record(path):
     raw = path.read_text(encoding="utf-8")
     metadata, body = frontmatter(raw)
+    html_date = re.search(r'<meta[^>]+(?:name|property)=["\']date["\'][^>]+content=["\']([^"\']+)', body, re.IGNORECASE)
     relative = path.relative_to(ROOT).as_posix()
     language = path.relative_to(POSTS).parts[0]
     modified = date.fromtimestamp(path.stat().st_mtime).isoformat()
@@ -50,7 +57,10 @@ def post_record(path):
         "language": language,
         "slug": path.stem,
         "title": title_from(path, body, metadata),
-        "date": metadata.get("date", modified),
+        "date": metadata.get("date", html_date.group(1) if html_date else modified),
+        "section": metadata.get("section", "Notes"),
+        "summary": metadata.get("summary", ""),
+        "tags": [tag.strip() for tag in metadata.get("tags", "").split(",") if tag.strip()],
         "format": path.suffix.lower().lstrip("."),
     }
 

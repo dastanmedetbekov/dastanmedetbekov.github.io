@@ -26,8 +26,11 @@ function renderList() {
         : state.posts.filter((post) => post.language === state.language);
     list.innerHTML = filtered.map((post) => `
         <a class="post-row" href="?post=${encodeURIComponent(post.path)}">
-            <span class="post-title">${escapeHtml(post.title)}</span>
-            <span class="post-language">${escapeHtml(languageLabel(post.language))}</span>
+            <span class="post-title-block">
+                <span class="post-title">${escapeHtml(post.title)}</span>
+                ${post.summary ? `<span class="post-summary">${escapeHtml(post.summary)}</span>` : ""}
+            </span>
+            <span class="post-language">${escapeHtml(post.section)} / ${escapeHtml(languageLabel(post.language))}</span>
             <time datetime="${escapeHtml(post.date)}">${escapeHtml(formatDate(post.date))}</time>
         </a>`).join("");
     count.textContent = `${filtered.length} ${filtered.length === 1 ? "note" : "notes"}`;
@@ -47,8 +50,14 @@ async function openPost(path) {
     if (!response.ok) throw new Error("Unable to load this note.");
     const text = await response.text();
     const body = text.replace(/^---[\s\S]*?---\s*\n/, "");
-    content.innerHTML = post.format === "txt" ? `<pre>${escapeHtml(body)}</pre>` : marked.parse(body);
-    content.insertAdjacentHTML("afterbegin", `<p class="kicker">${escapeHtml(languageLabel(post.language))} / ${escapeHtml(formatDate(post.date))}</p>`);
+    if (["html", "htm"].includes(post.format)) {
+        const documentFragment = new DOMParser().parseFromString(body, "text/html");
+        content.innerHTML = documentFragment.body.innerHTML || body;
+    } else {
+        content.innerHTML = post.format === "txt" ? `<pre>${escapeHtml(body)}</pre>` : marked.parse(body);
+    }
+    const tags = post.tags?.length ? `<div class="post-tags">${post.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>` : "";
+    content.insertAdjacentHTML("afterbegin", `<p class="kicker">${escapeHtml(post.section)} / ${escapeHtml(languageLabel(post.language))} / ${escapeHtml(formatDate(post.date))}</p><h1 class="post-heading">${escapeHtml(post.title)}</h1>${tags}`);
     list.hidden = true;
     document.querySelector(".intro").hidden = true;
     view.hidden = false;

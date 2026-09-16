@@ -26,12 +26,17 @@ h1 em { color: var(--accent); font-weight: 500; }
 .post-list { padding: 1.5rem 0 5rem; }
 .post-row { display: grid; grid-template-columns: 1fr 10rem 8rem; gap: 1rem; align-items: baseline; padding: 1.25rem 0; border-bottom: 1px solid var(--line); text-decoration: none; }
 .post-row:hover .post-title { color: var(--accent); }
+.post-title-block { display: grid; gap: .3rem; }
 .post-title { font-size: 1.7rem; }
+.post-summary { max-width: 42rem; color: var(--muted); font-size: 1rem; }
 .post-language, time { color: var(--muted); }
 time { text-align: right; }
 .post-view { max-width: 48rem; padding: 4rem 0 7rem; }
 .back-link { display: inline-block; margin-bottom: 4rem; color: var(--accent); text-decoration: none; }
 .post-view h1 { max-width: none; margin-bottom: 2rem; font-size: clamp(2.7rem, 6vw, 5.5rem); }
+.post-view .post-heading { margin: 0 0 1.2rem; }
+.post-tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 3.5rem; }
+.post-tags span { padding: .35rem .55rem; border: 1px solid var(--line); color: var(--muted); font: .68rem "DM Mono", monospace; text-transform: uppercase; }
 .post-view p, .post-view li { max-width: 38rem; line-height: 1.55; }
 .post-view blockquote { margin: 2rem 0; padding-left: 1.5rem; border-left: 2px solid var(--accent); font-size: 1.5rem; }
 .post-view img { max-width: 100%; height: auto; }

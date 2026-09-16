@@ -9,5 +9,20 @@
     "summary": "",
     "tags": [],
     "format": "md"
+  },
+  {
+    "path": "posts/en/kyrpyk.html",
+    "language": "en",
+    "slug": "kyrpyk",
+    "title": "In Memory of Kyrpyk",
+    "date": "2025-12-30",
+    "section": "Personal",
+    "summary": "Remembering a faithful companion.",
+    "tags": [
+      "memory",
+      "dogs",
+      "family"
+    ],
+    "format": "html"
   }
 ]

@@ -1,9 +1,9 @@
 :root {
-    --ink: #20221f;
-    --muted: #73766f;
-    --line: #d9d8cf;
-    --paper: #f4f2eb;
-    --accent: #bb3e2e;
+    --ink: #eee9dd;
+    --muted: #aaa79d;
+    --line: #44463f;
+    --paper: #1b1d1a;
+    --accent: #db765b;
     --measure: 72rem;
 }
 

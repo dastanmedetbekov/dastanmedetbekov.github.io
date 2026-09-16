@@ -57,7 +57,8 @@ async function openPost(path) {
         content.innerHTML = post.format === "txt" ? `<pre>${escapeHtml(body)}</pre>` : marked.parse(body);
     }
     const tags = post.tags?.length ? `<div class="post-tags">${post.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>` : "";
-    content.insertAdjacentHTML("afterbegin", `<p class="kicker">${escapeHtml(post.section)} / ${escapeHtml(languageLabel(post.language))} / ${escapeHtml(formatDate(post.date))}</p><h1 class="post-heading">${escapeHtml(post.title)}</h1>${tags}`);
+    const titleMarkup = ["html", "htm"].includes(post.format) ? "" : `<h1 class="post-heading">${escapeHtml(post.title)}</h1>`;
+    content.insertAdjacentHTML("afterbegin", `<p class="kicker">${escapeHtml(post.section)} / ${escapeHtml(languageLabel(post.language))} / ${escapeHtml(formatDate(post.date))}</p>${titleMarkup}${tags}`);
     list.hidden = true;
     document.querySelector(".intro").hidden = true;
     view.hidden = false;
